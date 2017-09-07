@@ -1,14 +1,15 @@
 from playground.network.packet import PacketType
+from playground.network.packet.fieldtypes import STRING, BUFFER, BOOL, ListFieldType
 from ConnectPackets import ConnectResult, RequestConnect, VerifyAnswer, VerifyQuestion
 
 
-def UnitTest_RequestConnect(iD):
+def UnitTest_RequestConnect(testNum,iD):
 	packet1=RequestConnect()
+	packet1.testNum=testNum
 	packet1.iD=iD
 	packet1Bytes=packet1.__serialize__()
 	packet1a=PacketType.Deserialize(packet1Bytes)
 	assert packet1==packet1a
-
 
 def UnitTest_VerifyQuestion(iD,question):
 	packet2=VerifyQuestion()
@@ -35,15 +36,20 @@ def UnitTest_ConnectResult(iD,result):
 	assert packet4==packet4a
 
 
-
 if __name__=="__main__":
+
+
 	#1
-	UnitTest_RequestConnect("May")
+	UnitTest_RequestConnect(22,"May")
 	UnitTest_VerifyQuestion("May","What's your mother's mid name?")
 	UnitTest_VerifyAnswer("May",b"It's a secret.")
 	UnitTest_ConnectResult("May",False)
 	#2
-	UnitTest_RequestConnect("Five")
+	UnitTest_RequestConnect(33,"Five")
 	UnitTest_VerifyQuestion("Five","What's your favorite book?")
 	UnitTest_VerifyAnswer("Five",b"Nothing!")
 	UnitTest_ConnectResult("Five",True)
+
+
+
+

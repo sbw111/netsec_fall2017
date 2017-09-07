@@ -1,11 +1,12 @@
 from playground.network.packet import PacketType
-from playground.network.packet.fieldtypes import STRING, BUFFER, BOOL
+from playground.network.packet.fieldtypes import STRING, BUFFER, BOOL, INT
 
 class RequestConnect(PacketType):
 	DEFINITION_IDENTIFIER = "lab1b.bshi.RequestConnect"
 	DEFINITION_VERSION = "1.0"
 
 	FIELDS = [
+		("testNum",INT),
 		("iD", STRING)
 	]
 
