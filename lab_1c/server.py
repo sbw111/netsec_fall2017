@@ -27,15 +27,14 @@ class MyServerProtocol(asyncio.Protocol):
 
     def connection_made(self, transport):
         peername = transport.get_extra_info('peername')
-        print('Connection from {}'.format(peername))
+        print('Build Connection from {}'.format(peername))
         self.transport = transport
-        self._deserializer = PacketType.Deserializer()
 
     def data_received(self, data):
-        self._deserializer.update(data)
-        for pkt in self._deserializer.nextPackets():
-            if pkt != None:
-                self.__MsgJug(pkt)
+        deserializer = PacketType.Deserializer()
+        deserializer.update(data)
+        for pkt in deserializer.nextPackets():
+            self.__MsgJug(pkt)
 
 '''
 loop = asyncio.get_event_loop()

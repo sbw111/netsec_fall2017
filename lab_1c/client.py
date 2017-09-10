@@ -5,29 +5,26 @@ from ConnectPackets import ConnectResult, RequestConnect, VerifyAnswer, VerifyQu
 
 class MyClientProtocol(asyncio.Protocol):
 
-    def __init__(self, loop):
+    def __init__(self):
         self.transport = None
-        self.loop = loop
 
     def connection_made(self, transport):
         self.transport = transport
-        self._deserializer = PacketType.Deserializer()
-        transport.write(self.__GenID())
+        self.transport.write(self.__GenID())
 
     def data_received(self, data):
-        self._deserializer.update(data)
-        for pkt in self._deserializer.nextPackets():
-            if pkt != None:
-                if pkt.DEFINITION_IDENTIFIER == "lab1b.bshi.VerifyQuestion":
-                    self.__ReturnAnswer(pkt)
-                elif pkt.DEFINITION_IDENTIFIER == "lab1b.bshi.ConnectResult":
-                    print(pkt.result)
+        deserializer = PacketType.Deserializer()
+        deserializer.update(data)
+        for pkt in deserializer.nextPackets():
+            if pkt.DEFINITION_IDENTIFIER == "lab1b.bshi.VerifyQuestion":
+                self.__ReturnAnswer(pkt)
+            elif pkt.DEFINITION_IDENTIFIER == "lab1b.bshi.ConnectResult":
+                print("Final Connect Answer: ", pkt.result)
 
     def connection_lost(self, exc):
         print('The server closed the connection')
         print('Stop the event loop')
         self.transport = None
-        self.loop.Stop()
 
     def __GenID(self):
         packet1 = RequestConnect()

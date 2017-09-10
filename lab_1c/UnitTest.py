@@ -9,15 +9,15 @@ import asyncio
 
 
 def basicUnitTest():
-    loop = asyncio.set_event_loop(TestLoopEx())
+
+    asyncio.set_event_loop(TestLoopEx())
     server = MyServerProtocol()
-    client = MyClientProtocol(loop)
+    client = MyClientProtocol()
     transportToServer = MockTransportToProtocol(server)
     transportToClient = MockTransportToProtocol(client)
     server.connection_made(transportToClient)
     client.connection_made(transportToServer)
 
 if __name__ == "__main__":
-    NotImplementedError
     basicUnitTest()
     print("Basic Unit Test Successful.")
