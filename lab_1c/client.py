@@ -8,18 +8,21 @@ class MyClientProtocol(asyncio.Protocol):
     def __init__(self):
         self.transport = None
 
+    def __MsgJug(self, pkt):
+        if isinstance(pkt, VerifyQuestion):
+            self.__ReturnAnswer(pkt)
+        elif isinstance(pkt, ConnectResult):
+            print("Final Connect Answer: ", pkt.result)
+
     def connection_made(self, transport):
         self.transport = transport
-        self.transport.write(self.__GenID())
+        self._deserializer = PacketType.Deserializer()
+        # self.transport.write(self.__GenID())
 
     def data_received(self, data):
-        deserializer = PacketType.Deserializer()
-        deserializer.update(data)
-        for pkt in deserializer.nextPackets():
-            if pkt.DEFINITION_IDENTIFIER == "lab1b.bshi.VerifyQuestion":
-                self.__ReturnAnswer(pkt)
-            elif pkt.DEFINITION_IDENTIFIER == "lab1b.bshi.ConnectResult":
-                print("Final Connect Answer: ", pkt.result)
+        self._deserializer.update(data)
+        for pkt in self._deserializer.nextPackets():
+            self.__MsgJug(pkt)
 
     def connection_lost(self, exc):
         print('The server closed the connection')

@@ -9,12 +9,12 @@ class MyServerProtocol(asyncio.Protocol):
         self.transport = None
 
     def __MsgJug(self, pkt):
-        if pkt.DEFINITION_IDENTIFIER == "lab1b.bshi.RequestConnect":
+        if isinstance(pkt, RequestConnect):
             packet2 = VerifyQuestion()
             packet2.iD = pkt.iD
             packet2.question = "What's your best friend's first name?"
             self.transport.write(packet2.__serialize__())
-        elif pkt.DEFINITION_IDENTIFIER == "lab1b.bshi.VerifyAnswer":
+        elif isinstance(pkt, VerifyAnswer):
             packet4 = ConnectResult()
             packet4.iD = pkt.iD
             if pkt.answer == b"Sze":
@@ -29,11 +29,11 @@ class MyServerProtocol(asyncio.Protocol):
         peername = transport.get_extra_info('peername')
         print('Build Connection from {}'.format(peername))
         self.transport = transport
+        self._deserializer = PacketType.Deserializer()
 
     def data_received(self, data):
-        deserializer = PacketType.Deserializer()
-        deserializer.update(data)
-        for pkt in deserializer.nextPackets():
+        self._deserializer.update(data)
+        for pkt in self._deserializer.nextPackets():
             self.__MsgJug(pkt)
 
 '''
