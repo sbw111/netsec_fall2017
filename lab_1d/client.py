@@ -2,11 +2,13 @@ import asyncio
 import playground
 from playground.network.packet import PacketType
 from ConnectPackets import ConnectResult, RequestConnect, VerifyAnswer, VerifyQuestion
+import time
 
 
 class MyClientProtocol(asyncio.Protocol):
 
     def __init__(self, loop):
+        self.transport = None
         self.loop = loop
 
     def __MsgJug(self, pkt):
@@ -14,13 +16,14 @@ class MyClientProtocol(asyncio.Protocol):
             self.__ReturnAnswer(pkt)
         elif isinstance(pkt, ConnectResult):
             print("Final Connect Answer: ", pkt.result)
-            # self.loop.stop()
 
     def connection_made(self, transport):
         self.transport = transport
         self._deserializer = PacketType.Deserializer()
+        # test
         self.transport.write(self.__GenID())
-        print('hi')
+        time.sleep(1)
+        self.transport.write(self.__GenID())
 
     def data_received(self, data):
         self._deserializer.update(data)
@@ -30,7 +33,7 @@ class MyClientProtocol(asyncio.Protocol):
     def connection_lost(self, exc):
         print('The server closed the connection')
         print('Stop the event loop')
-        self.loop.stop()
+        self.loop.Stop()
 
     def __GenID(self):
         packet1 = RequestConnect()
@@ -43,8 +46,10 @@ class MyClientProtocol(asyncio.Protocol):
         packet3.answer = b"Sze"
         self.transport.write(packet3.__serialize__())
 
-loop = asyncio.get_event_loop()
-coro = playground.getConnector().create_playground_connection(lambda: MyClientProtocol(loop), '20174.1.1.1', 8888)
-loop.run_until_complete(coro)
-loop.run_forever()
-loop.close()
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    #client = MyClientProtocol()
+    coro = playground.getConnector().create_playground_connection(lambda: MyClientProtocol(loop), '20174.1.1.1', 666)
+    loop.run_until_complete(coro)
+    loop.run_forever()
+    loop.close()

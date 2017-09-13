@@ -6,6 +6,9 @@ from ConnectPackets import ConnectResult, RequestConnect, VerifyAnswer, VerifyQu
 
 class MyServerProtocol(asyncio.Protocol):
 
+    def __init__(self):
+        self.transport = None
+
     def __MsgJug(self, pkt):
         if isinstance(pkt, RequestConnect):
             packet2 = VerifyQuestion()
@@ -24,9 +27,9 @@ class MyServerProtocol(asyncio.Protocol):
             self.transport.close()
 
     def connection_made(self, transport):
+        self.transport = transport
         peername = transport.get_extra_info('peername')
         print('Build Connection from {}'.format(peername))
-        self.transport = transport
         self._deserializer = PacketType.Deserializer()
 
     def data_received(self, data):
@@ -34,17 +37,11 @@ class MyServerProtocol(asyncio.Protocol):
         for pkt in self._deserializer.nextPackets():
             self.__MsgJug(pkt)
 
-
-loop = asyncio.get_event_loop()
-
-coro = playground.getConnector().create_playground_server(MyServerProtocol, 8888)
-
-server = loop.run_until_complete(coro)
-try:
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    #coro = loop.create_server(MyServerProtocol, '127.0.0.1', 8888)
+    coro = playground.getConnector().create_playground_server(MyServerProtocol, 666)
+    server = loop.run_until_complete(coro)
+    print("Echo Server Started at {}".format(server.sockets[0].gethostname()))
     loop.run_forever()
-except KeyboardInterrupt:
-    pass
-
-server.close()
-loop.run_until_complete(server.wait_closed())
-loop.close()
+    loop.close()
