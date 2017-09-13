@@ -25,6 +25,6 @@ def basicUnitTest():
     clientProtocol.transport.write(packet1.__serialize__())
 
 if __name__ == "__main__":
-    # p_logging.EnablePresetLogging(p_logging.PRESET_TEST)
+    p_logging.EnablePresetLogging(p_logging.PRESET_TEST)
     basicUnitTest()
     print("Basic Unit Test Successful.")
