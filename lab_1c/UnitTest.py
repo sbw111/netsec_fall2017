@@ -15,16 +15,15 @@ def basicUnitTest():
     # asyncio.set_event_loop(TestLoopEx())
     clientProtocol = MyClientProtocol()
     serverProtocol = MyServerProtocol()
-    transportToServer = MockTransportToProtocol(serverProtocol)
-    transportToClient = MockTransportToProtocol(clientProtocol)
-    clientProtocol.connection_made(transportToServer)
-    serverProtocol.connection_made(transportToClient)
+    cTransport, sTransport = MockTransportToProtocol.CreateTransportPair(clientProtocol, serverProtocol)
+    clientProtocol.connection_made(cTransport)
+    serverProtocol.connection_made(sTransport)
 
     packet1 = RequestConnect()
     packet1.iD = "ELROY"
     clientProtocol.transport.write(packet1.__serialize__())
 
 if __name__ == "__main__":
-    #p_logging.EnablePresetLogging(p_logging.PRESET_TEST)
+    # p_logging.EnablePresetLogging(p_logging.PRESET_TEST)
     basicUnitTest()
     print("Basic Unit Test Successful.")

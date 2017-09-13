@@ -25,8 +25,7 @@ class MyClientProtocol(asyncio.Protocol):
             self.__MsgJug(pkt)
 
     def connection_lost(self, exc):
-        print('The server closed the connection')
-        print('Stop the event loop')
+        print('Clinet:The server closed the connection')
         self.transport.close()
 
     def __GenID(self):

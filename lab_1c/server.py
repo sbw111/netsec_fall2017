@@ -22,11 +22,12 @@ class MyServerProtocol(asyncio.Protocol):
             else:
                 packet4.result = False
             self.transport.write(packet4.__serialize__())
+            print('Server: Protocol Finished')
             self.transport.close()
 
     def connection_made(self, transport):
         peername = transport.get_extra_info('peername')
-        print('Build Connection from {}'.format(peername))
+        print('Server:Build Connection from {}'.format(peername))
         self.transport = transport
         self._deserializer = PacketType.Deserializer()
 
