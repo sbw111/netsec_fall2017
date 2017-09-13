@@ -13,16 +13,16 @@ from playground.common import logging as p_logging
 def basicUnitTest():
 
     # asyncio.set_event_loop(TestLoopEx())
-    server = MyServerProtocol()
-    client = MyClientProtocol()
-    transportToServer = MockTransportToProtocol(server)
-    transportToClient = MockTransportToProtocol(client)
-    server.connection_made(transportToClient)
-    client.connection_made(transportToServer)
+    clientProtocol = MyClientProtocol()
+    serverProtocol = MyServerProtocol()
+    transportToServer = MockTransportToProtocol(serverProtocol)
+    transportToClient = MockTransportToProtocol(clientProtocol)
+    clientProtocol.connection_made(transportToServer)
+    serverProtocol.connection_made(transportToClient)
 
     packet1 = RequestConnect()
     packet1.iD = "ELROY"
-    client.transport.write(packet1.__serialize__())
+    clientProtocol.transport.write(packet1.__serialize__())
 
 if __name__ == "__main__":
     # p_logging.EnablePresetLogging(p_logging.PRESET_TEST)

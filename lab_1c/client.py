@@ -27,7 +27,7 @@ class MyClientProtocol(asyncio.Protocol):
     def connection_lost(self, exc):
         print('The server closed the connection')
         print('Stop the event loop')
-        self.transport = None
+        self.transport.close()
 
     def __GenID(self):
         packet1 = RequestConnect()

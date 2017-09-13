@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"Con",
+				"ConnectResult\tclass"
+			],
+			[
+				"ver",
+				"VerifyQuestion\tclass"
+			],
+			[
+				"V",
+				"VerifyAnswer\tclass"
+			],
+			[
+				"R",
+				"RequestConnect\tclass"
+			],
+			[
+				"l",
+				"loop\tparam"
+			],
+			[
+				"C",
+				"connection_made\tfunction"
+			],
+			[
+				"cl",
+				"client\tmodule"
+			],
+			[
+				"D",
+				"DEFINITION_IDENTIFIER"
+			],
+			[
+				"r",
+				"result"
+			],
+			[
+				"pack",
+				"packet4\tstatement"
+			],
+			[
+				"conn",
+				"ConnectResult\tclass"
+			],
+			[
+				"tr",
+				"transport"
+			],
+			[
+				"asy",
+				"asyncio\tmodule"
+			],
+			[
 				"pr",
 				"Protocol\tclass"
 			],
@@ -20,19 +72,10 @@
 	"buffers":
 	[
 		{
-			"file": "lab1c.py",
-			"settings":
-			{
-				"buffer_size": 361,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "client.py",
 			"settings":
 			{
-				"buffer_size": 695,
+				"buffer_size": 1445,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -41,17 +84,25 @@
 			"file": "server.py",
 			"settings":
 			{
-				"buffer_size": 991,
+				"buffer_size": 1690,
 				"encoding": "UTF-8",
-				"line_ending": "Unix",
-				"name": "import asyncio"
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/elroy/somedir/netsec_fall2017/lab_1b/UnitTest.py",
+			"file": "UnitTest.py",
 			"settings":
 			{
-				"buffer_size": 1870,
+				"buffer_size": 1043,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ConnectPackets.py",
+			"settings":
+			{
+				"buffer_size": 874,
 				"line_ending": "Unix"
 			}
 		}
@@ -79,10 +130,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 155.0,
-		"last_filter": "venv",
+		"height": 335.0,
+		"last_filter": "Package Control: ",
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
 			[
 				"venv",
 				"Virtualenv: New (venv)"
@@ -90,10 +145,6 @@
 			[
 				"Virtualenv: Activate",
 				"Virtualenv: Activate"
-			],
-			[
-				"Package Control: ",
-				"Package Control: Install Package"
 			]
 		],
 		"width": 398.0
@@ -118,6 +169,7 @@
 	"expanded_folders":
 	[
 		"/home/elroy/somedir",
+		"/home/elroy/somedir/lib",
 		"/home/elroy/somedir/netsec_fall2017",
 		"/home/elroy/somedir/netsec_fall2017/lab_1b",
 		"/home/elroy/somedir/netsec_fall2017/lab_1b/__pycache__",
@@ -125,16 +177,27 @@
 	],
 	"file_history":
 	[
-		"/home/elroy/somedir/netsec_fall2017/lab_1b/netsec_lab1b",
-		"/home/elroy/somedir/netsec_fall2017/lab_1b/ConnectPackets.py",
+		"/home/elroy/somedir/lib/python3.5/site-packages/playground/network/devices/vnic/VNIC.py",
+		"/home/elroy/somedir/lib/python3.5/site-packages/playground/network/testing/mock.py",
+		"/home/elroy/somedir/lib/python3.5/site-packages/playground/asyncio_lib/testing/TestLoopEx.py",
+		"/home/elroy/somedir/netsec_fall2017/lab_1c/netsec lab_1c",
+		"/home/elroy/somedir/lib/python3.5/site-packages/pip/_vendor/distlib/compat.py",
+		"/home/elroy/somedir/lib/python3.5/site-packages/playground/network/packet/PacketType.py",
 		"/home/elroy/somedir/netsec_fall2017/lab_1b/UnitTest.py",
+		"/home/elroy/somedir/lib/python3.5/site-packages/playground/network/protocols/vsockets.py",
+		"/home/elroy/somedir/lib/python3.5/site-packages/playground/network/protocols/packets/vsocket_packets.py",
+		"/home/elroy/somedir/netsec_fall2017/lab_1c/ConnectPackets.py",
+		"/home/elroy/.config/sublime-text-3/Packages/User/AutoPep8.sublime-settings",
+		"/home/elroy/somedir/netsec_fall2017/lab_1b/ConnectPackets.py",
+		"/home/elroy/somedir/netsec_fall2017/lab_1c/lab1c.py",
+		"/home/elroy/somedir/netsec_fall2017/lab_1b/netsec_lab1b",
 		"/home/elroy/somedir/Test",
 		"/home/elroy/.config/sublime-text-3/Packages/User/Virtualenv.sublime-settings",
 		"/home/elroy/.config/sublime-text-3/Packages/User/Anaconda.sublime-settings"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -148,6 +211,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pkt1",
+			"pkt",
+			"make_connection",
+			"MockTransportToProtocol"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -155,6 +222,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"pkt",
+			"pkt1"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -165,24 +234,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lab1c.py",
+					"file": "client.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 361,
+						"buffer_size": 1445,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								361,
-								361
+								955,
+								955
 							]
 						],
 						"settings":
@@ -196,8 +265,107 @@
 								{
 									"characters": ".",
 									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
 								}
 							],
+							"autopep8_view_autosave": true,
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "server.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1690,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1179,
+								1179
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"autopep8_view_autosave": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "UnitTest.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1043,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								633,
+								633
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"autopep8_view_autosave": true,
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
@@ -208,96 +376,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "client.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 695,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								356,
-								356
-							]
-						],
-						"settings":
-						{
-							"auto_complete_triggers":
-							[
-								{
-									"characters": ".",
-									"selector": "source.python - string - comment - constant.numeric"
-								},
-								{
-									"characters": ".",
-									"selector": "source.python - string - constant.numeric"
-								}
-							],
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "server.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 991,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								991,
-								991
-							]
-						],
-						"settings":
-						{
-							"auto_name": "import asyncio",
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
 					"buffer": 3,
-					"file": "/home/elroy/somedir/netsec_fall2017/lab_1b/UnitTest.py",
-					"semi_transient": true,
+					"file": "ConnectPackets.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1870,
+						"buffer_size": 874,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								355,
+								355
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -311,7 +408,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -340,9 +437,13 @@
 		]
 	},
 	"menu_visible": true,
-	"output.exec":
+	"output.autopep8":
 	{
 		"height": 100.0
+	},
+	"output.exec":
+	{
+		"height": 222.0
 	},
 	"output.find_results":
 	{
@@ -352,7 +453,7 @@
 	"project": "netsec lab_1c",
 	"replace":
 	{
-		"height": 0.0
+		"height": 58.0
 	},
 	"save_all_on_build": false,
 	"select_file":
@@ -390,7 +491,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 131.0,
+	"side_bar_width": 162.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

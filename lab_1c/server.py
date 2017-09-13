@@ -22,8 +22,7 @@ class MyServerProtocol(asyncio.Protocol):
             else:
                 packet4.result = False
             self.transport.write(packet4.__serialize__())
-            print('Close the client socket')
-            self.transport = None
+            self.transport.close()
 
     def connection_made(self, transport):
         peername = transport.get_extra_info('peername')
